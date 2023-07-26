@@ -25,12 +25,16 @@ class ChatbotView(APIView):
     permission_classes = [IsAuthenticated]
     
     def post(self, request, format=None):
+        # For reading data from fail
         # with open('/Users/aibekworllld/Desktop/ev.28/job/chatclone/data/info.txt', 'r', encoding='utf-8') as file:
         #     my_data = file.read()
+
+        # For reading data in database
         queryset = Data.objects.all()
         my_data = []
         for obj in queryset:
             my_data.extend(obj.data_list)
+            
         message = request.data.get('message')
         if message is None:
             return Response({'detail': 'Field "message" is required'}, status=status.HTTP_400_BAD_REQUEST)
