@@ -18,6 +18,9 @@ class Data(models.Model):
 
     def __str__(self):
         return str(self.data_list)
+    
+    class Meta:
+        db_table = 'chat_db_table'
 
 my_data = [
     {"role": "system", "content": "You are a helpful assistant."},
@@ -31,7 +34,12 @@ my_data = [
     {"role": "assistant", "content": "Your name is Thomas Shelby but your friends call you Anton"},
 ]
 
-serialized_data = json.dumps(my_data)
+import json
 
-my_model_instance = Data(data_list=my_data)
-my_model_instance.save()
+with open('/Users/aibekworllld/Desktop/ev.28/job/chatclone/data/info.json', 'w', encoding='utf-8') as chat_file:
+    json.dump(my_data, chat_file, ensure_ascii=False)
+
+# serialized_data = json.dumps(my_data)
+
+# my_model_instance = Data(data_list=my_data)
+# my_model_instance.save()

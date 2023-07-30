@@ -5,3 +5,5 @@ djangorestframework
 python-decouple
 dj_rest_auth
 PyPDF2
+nltk
+language-check    
